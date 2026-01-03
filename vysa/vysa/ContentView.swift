@@ -10,40 +10,52 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-
-    @State private var enlarge = false
+    
+    @Environment(AppModel.self) private var appModel
 
     var body: some View {
-        RealityView { content in
-            // Add the initial RealityKit content
-            if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
-                content.add(scene)
-            }
-        } update: { content in
-            // Update the RealityKit content when SwiftUI state changes
-            if let scene = content.entities.first {
-                let uniformScale: Float = enlarge ? 1.4 : 1.0
-                scene.transform.scale = [uniformScale, uniformScale, uniformScale]
-            }
-        }
-        .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
-            enlarge.toggle()
-        })
-        .toolbar {
-            ToolbarItemGroup(placement: .bottomOrnament) {
-                VStack (spacing: 12) {
-                    Button {
-                        enlarge.toggle()
-                    } label: {
-                        Text(enlarge ? "Reduce RealityView Content" : "Enlarge RealityView Content")
+        VStack(spacing: 20) {
+            Text("VYSA")
+                .font(.system(size: 48, weight: .bold))
+                .foregroundStyle(.linearGradient(
+                    colors: [.blue, .purple, .pink],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                ))
+            
+            Text("Audio-Reactive Particle Visualizer")
+                .font(.title3)
+                .foregroundColor(.secondary)
+            
+            Spacer()
+            
+            VStack(spacing: 16) {
+                Text("Enter the immersive space to see audio-reactive particles")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                
+                ToggleImmersiveSpaceButton()
+                
+                if appModel.immersiveSpaceState == .open {
+                    VStack(spacing: 12) {
+                        Text("Controls")
+                            .font(.headline)
+                        
+                        Text("• Tap anywhere to switch visualization modes")
+                        Text("• Play audio to see particles react")
+                        Text("• 5 unique visualization patterns available")
                     }
-                    .animation(.none, value: 0)
-                    .fontWeight(.semibold)
-
-                    ToggleImmersiveSpaceButton()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding()
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
                 }
             }
+            
+            Spacer()
         }
+        .padding()
     }
 }
 

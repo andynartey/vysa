@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>UIApplicationSceneManifest</key>
 	<dict>
-		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
-		<string>UIWindowSceneSessionRoleVolumetricApplication</string>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<true/>
-		<key>UISceneConfigurations</key>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Vysa uses the microphone to visualise music playing through your speakers in real-time.</string>
+		<key>UIApplicationSceneManifest</key>
 		<dict>
-			<key>UISceneSessionRoleImmersiveSpaceApplication</key>
-			<array>
-				<dict>
-					<key>UISceneInitialImmersionStyle</key>
-					<string>UIImmersionStyleMixed</string>
-				</dict>
-			</array>
+			<key>UIApplicationPreferredDefaultSceneSessionRole</key>
+			<string>UIWindowSceneSessionRoleVolumetricApplication</string>
+			<key>UIApplicationSupportsMultipleScenes</key>
+			<true/>
+			<key>UISceneConfigurations</key>
+			<dict>
+				<key>UISceneSessionRoleImmersiveSpaceApplication</key>
+				<array>
+					<dict>
+						<key>UISceneInitialImmersionStyle</key>
+						<string>UIImmersionStyleMixed</string>
+					</dict>
+				</array>
+			</dict>
 		</dict>
 	</dict>
-</dict>
 </plist>

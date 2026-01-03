@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct vysaApp: App {
+struct VysaApp: App {
 
     @State private var appModel = AppModel()
 
